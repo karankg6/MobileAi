@@ -10,6 +10,7 @@ import org.kgajjar.mobileai.navigation.getAllNavigationItems
 import org.kgajjar.mobileai.screens.HomeScreen
 import org.kgajjar.mobileai.screens.SearchScreen
 import org.kgajjar.mobileai.screens.ProfileScreen
+import org.kgajjar.mobileai.screens.UltrasoundScreen
 import org.kgajjar.mobileai.theme.DarkColorScheme
 
 @Composable
@@ -57,6 +58,7 @@ fun App() {
             ) {
                 when (selectedItem) {
                     NavigationItem.Home -> HomeScreen()
+                    NavigationItem.Ultrasound -> UltrasoundScreen()
                     NavigationItem.Search -> SearchScreen()
                     NavigationItem.Profile -> ProfileScreen()
                 }

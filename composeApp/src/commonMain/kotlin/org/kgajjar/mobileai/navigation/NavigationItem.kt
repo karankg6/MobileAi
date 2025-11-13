@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.MonitorHeart
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class NavigationItem(
@@ -13,6 +14,11 @@ sealed class NavigationItem(
     data object Home : NavigationItem(
         title = "Home",
         icon = Icons.Default.Home
+    )
+
+    data object Ultrasound : NavigationItem(
+        title = "Ultrasound",
+        icon = Icons.Default.MonitorHeart
     )
 
     data object Search : NavigationItem(
@@ -29,6 +35,7 @@ sealed class NavigationItem(
 fun getAllNavigationItems(): List<NavigationItem> {
     return listOf(
         NavigationItem.Home,
+        NavigationItem.Ultrasound,
         NavigationItem.Search,
         NavigationItem.Profile
     )

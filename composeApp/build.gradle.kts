@@ -34,6 +34,8 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            // Lifecycle ViewModel for ultrasound
+            implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -66,6 +68,27 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        // NDK configuration for JNI
+        ndk {
+            abiFilters.addAll(listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
+        }
+
+        // External native build configuration
+        externalNativeBuild {
+            cmake {
+                cppFlags("-std=c++17", "-frtti", "-fexceptions")
+                arguments("-DANDROID_STL=c++_shared")
+            }
+        }
+    }
+
+    // CMake build configuration
+    externalNativeBuild {
+        cmake {
+            path("CMakeLists.txt")
+            version = "3.18.1"
+        }
     }
     packaging {
         resources {
